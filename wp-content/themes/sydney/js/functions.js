@@ -1,0 +1,937 @@
+"use strict";
+
+if (window.NodeList && !NodeList.prototype.forEach) {
+    NodeList.prototype.forEach = function (callback, thisArg) {
+        thisArg = thisArg || window;
+        for (var i = 0; i < this.length; i++) {
+            callback.call(thisArg, this[i], i, this);
+        }
+    };
+}
+
+var sydney = sydney || {};
+
+/**
+ * Handles toggling the navigation menu for small screens and enables TAB key
+ * navigation support for dropdown menus.
+ */
+ sydney.navigation = {
+	
+	init: function() {
+
+		var siteNavigation 	=  document.getElementById( 'mainnav' );
+
+		const offCanvas 	= document.getElementsByClassName( 'sydney-offcanvas-menu' )[0];
+
+		//check if header builder is active
+		if ( document.body.classList.contains( 'has-shfb-builder' ) ) {
+			siteNavigation = document.getElementsByClassName( 'main-navigation' )[0];
+		}
+
+		// Return early if the navigation don't exist.
+		if ( ! siteNavigation ) {
+			return;
+		}
+
+		//Toggle submenus
+		var submenuToggles = siteNavigation.querySelectorAll( '.dropdown-symbol' );
+
+		for ( var submenuToggle of submenuToggles ) {
+			submenuToggle.addEventListener('keydown', function(e) {
+				var isTabPressed = (e.key === 'Enter' || e.keyCode === 13);
+
+				if (!isTabPressed) { 
+					return; 
+				}
+				e.preventDefault();
+				var parent = this.parentNode;
+				console.log(parent);
+				parent.getElementsByClassName( 'sub-menu' )[0].classList.toggle( 'toggled' );
+			});
+		}		
+	
+		const button 		= document.getElementsByClassName( 'menu-toggle' )[ 0 ];
+		const closeButton 	= document.getElementsByClassName( 'mobile-menu-close' )[ 0 ];
+
+		// Return early if the button don't exist.
+		if ( 'undefined' === typeof button ) {
+			return;
+		}
+	
+		const menu = siteNavigation.getElementsByTagName( 'ul' )[ 0 ];
+
+		const mobileMenuClose = siteNavigation.getElementsByClassName( 'mobile-menu-close' )[ 0 ];
+
+		// Hide menu toggle button if menu is empty and return early.
+		if ( 'undefined' === typeof menu ) {
+			button.style.display = 'none';
+			return;
+		}
+	
+		if ( ! menu.classList.contains( 'nav-menu' ) ) {
+			menu.classList.add( 'nav-menu' );
+		}	
+
+		var focusableEls = offCanvas.querySelectorAll('a[href]:not([disabled]):not(.mobile-menu-close)');
+
+		var firstFocusableEl = focusableEls[0];  
+
+		button.addEventListener( 'click', function(e) {
+
+			e.preventDefault();
+
+			button.classList.add( 'open' );
+
+			offCanvas.classList.add( 'toggled' );
+
+			document.body.classList.add( 'mobile-menu-visible' )
+			
+			//Toggle submenus
+			var submenuToggles = offCanvas.querySelectorAll( '.dropdown-symbol' );
+
+			for ( var submenuToggle of submenuToggles ) {
+				submenuToggle.addEventListener( 'touchstart', submenuToggleHandler );
+				submenuToggle.addEventListener( 'click', submenuToggleHandler );
+
+				submenuToggle.addEventListener('keydown', function(e) {
+					var isTabPressed = (e.key === 'Enter' || e.keyCode === 13);
+	
+					if (!isTabPressed) { 
+						return; 
+					}
+					e.preventDefault();
+					var parent = submenuToggle.parentNode.parentNode;
+					parent.getElementsByClassName( 'sub-menu' )[0].classList.toggle( 'toggled' );
+				});
+			}
+			
+			//Trap focus inside modal
+			firstFocusableEl.focus();
+		} );
+
+		function submenuToggleHandler(e) {
+			e.preventDefault();
+			var parent = e.target.closest( 'li' );
+			parent.querySelector( '.sub-menu' ).classList.toggle( 'toggled' );
+		}
+
+		var focusableEls = offCanvas.querySelectorAll('a[href]:not([disabled])');
+		var firstFocusableEl = focusableEls[0];  
+		var lastFocusableEl = focusableEls[focusableEls.length - 1];
+		var KEYCODE_TAB = 9;
+
+		lastFocusableEl.addEventListener('keydown', function(e) {
+			var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
+
+			if (!isTabPressed) { 
+				return; 
+			}
+
+			if ( e.shiftKey ) /* shift + tab */ {
+
+			} else /* tab */ {
+				firstFocusableEl.focus();
+			}
+		});		
+
+		closeButton.addEventListener( 'click', function(e) {
+			e.preventDefault();
+
+			button.focus();
+
+			button.classList.remove( 'open' );
+
+			offCanvas.classList.remove( 'toggled' );
+
+			document.body.classList.remove( 'mobile-menu-visible' );
+		} );
+
+		//Handle same page links in offcanvas menu
+		if ( offCanvas ) {
+			var samePageLinks = offCanvas.querySelectorAll( 'a[href*="#"]' );
+			for ( var samePageLink of samePageLinks ) {
+				samePageLink.addEventListener( 'click', samePageLinkHandler );
+			}
+		}
+
+		function samePageLinkHandler() {
+			// Reset mobile button focus state like the close button does
+			if ( button ) {
+				button.focus();
+				button.classList.remove( 'open' );
+			}
+			
+			offCanvas.classList.remove( 'toggled' );
+			document.body.classList.remove( 'mobile-menu-visible' );
+		}
+
+		// Get all the link elements within the menu.
+		const links = menu.getElementsByTagName( 'a' );
+	
+		// Get all the link elements with children within the menu.
+		const linksWithChildren = menu.querySelectorAll( '.menu-item-has-children > a, .page_item_has_children > a' );
+	
+		// Toggle focus each time a menu link is focused or blurred.
+		for ( const link of links ) {
+			link.addEventListener( 'focus', toggleFocus, true );
+			link.addEventListener( 'blur', toggleFocus, true );
+		}
+	
+		// Toggle focus each time a menu link with children receive a touch event.
+		for ( const link of linksWithChildren ) {
+			link.addEventListener( 'touchstart', toggleFocus, false );
+		}
+	
+		/**
+		 * Sets or removes .focus class on an element.
+		 */
+		function toggleFocus() {
+			if ( event.type === 'focus' || event.type === 'blur' ) {
+				let self = this;
+				// Move up through the ancestors of the current link until we hit .nav-menu.
+				while ( ! self.classList.contains( 'nav-menu' ) ) {
+					// On li elements toggle the class .focus.
+					if ( 'li' === self.tagName.toLowerCase() ) {
+						self.classList.toggle( 'focus' );
+					}
+					self = self.parentNode;
+				}
+			}
+	
+			if ( event.type === 'touchstart' ) {
+				const menuItem = this.parentNode;
+
+				for ( const link of menuItem.parentNode.children ) {
+					if ( menuItem !== link ) {
+						link.classList.remove( 'focus' );
+					}
+				}
+				menuItem.classList.toggle( 'focus' );
+			}
+		}
+
+		//handle aria-expanded for dropdowns
+		const dropdowns = document.querySelectorAll('.menu-item-has-children > a');
+
+		// Function to toggle aria-expanded
+		function toggleAriaExpanded(event) {
+			const expanded = this.getAttribute('aria-expanded') === 'true';
+			this.setAttribute('aria-expanded', !expanded);
+		}
+
+		dropdowns.forEach(dropdown => {
+			// Toggle aria-expanded on hover (mouse enter)
+			dropdown.addEventListener('mouseenter', function() {
+				this.setAttribute('aria-expanded', 'true');
+			});
+
+			// Collapse the menu when mouse leaves the menu item
+			dropdown.addEventListener('mouseleave', function() {
+				this.setAttribute('aria-expanded', 'false');
+			});
+		});		
+	},
+};
+
+/**
+ * Back to top
+ */
+sydney.backToTop = {
+	init: function() {
+		this.displayButton();	
+	},
+
+	setup: function() {
+		const icon 	= document.getElementsByClassName( 'go-top' )[0];
+
+		if ( typeof(icon) != 'undefined' && icon != null ) {
+			var vertDist = window.pageYOffset;
+
+			var toScroll = getComputedStyle(document.documentElement).getPropertyValue('--sydney-scrolltop-distance');
+
+			if ( vertDist > toScroll ) {
+				icon.classList.add( 'show' );
+			} else {
+				icon.classList.remove( 'show' );
+			}
+		
+			icon.addEventListener( 'click', function() {
+				window.scrollTo({
+					top: 0,
+					left: 0,
+					behavior: 'smooth',
+				});
+			} );
+		}
+	},
+
+	displayButton: function() {
+		
+		this.setup();
+
+		window.addEventListener( 'scroll', function() {
+			this.setup();
+		}.bind( this ) );		
+	},
+};
+
+/**
+ * Remove preloader
+ */
+sydney.removePreloader = {
+    init: function() {
+        this.remove();    
+    },
+
+    remove: function() {
+        const preloader = document.querySelectorAll('.preloader');
+
+        if (preloader.length === 0) {
+            return;
+        }
+
+        preloader.forEach(function(pr) {
+            pr.classList.add('disable');
+            setTimeout(function() {
+                pr.style.display = 'none';
+            }, 600);
+        });
+    },
+};
+
+/**
+ * Sticky menu
+ * 
+ * deprecated
+ */
+sydney.stickyMenu = {
+	init: function() {
+        this.headerClone();	
+        
+		window.addEventListener( 'resize', function() {
+			this.headerClone();
+        }.bind( this ) );	     
+        
+        this.sticky();
+
+		window.addEventListener( 'scroll', function() {
+			this.sticky();
+        }.bind( this ) );	        
+	},
+
+	headerClone: function() {
+
+        const header         = document.getElementsByClassName( 'site-header' )[0];
+        const headerClone    = document.getElementsByClassName( 'header-clone' )[0];
+
+		if ( ( typeof( headerClone ) == 'undefined' && headerClone == null ) || ( typeof( header ) == 'undefined' && header == null ) ) {
+			return;
+		}        
+
+        headerClone.style.height = header.offsetHeight + 'px';
+    },
+
+	sticky: function() {
+
+        const header = document.getElementsByClassName( 'site-header' )[0];
+        
+        if ( typeof( header ) == 'undefined' && header == null ) {
+			return;
+        }
+        
+		var vertDist = window.pageYOffset;
+        var elDist 	 = header.offsetTop;
+        
+
+        if ( vertDist >= elDist) {
+			header.classList.add( 'fixed' );
+            document.body.classList.add( 'siteScrolled' );
+        } else {
+			header.classList.remove( 'fixed' );
+            document.body.classList.remove( 'siteScrolled' );            
+        }
+        if ( vertDist >= 107 ) {
+            header.classList.add( 'float-header' );
+        } else {
+            header.classList.remove( 'float-header' );
+        }
+
+    },
+
+};
+
+/**
+ * Sticky header
+ */
+ sydney.stickyHeader = {
+	init: function() {
+		let body = document.getElementsByTagName( 'body' )[0];
+
+		// Check for header builder sticky headers
+		let desktopStickyHeaders = document.querySelectorAll( '.shfb-desktop .shfb-sticky-header' );
+		let mobileStickyHeaders = document.querySelectorAll( '.shfb-mobile .shfb-sticky-header' );
+		
+		// Check for legacy sticky header
+		let legacyStickyHeader = document.getElementsByClassName( 'sticky-header' )[0];
+
+		// Return if no sticky headers found
+		if ( desktopStickyHeaders.length === 0 && mobileStickyHeaders.length === 0 && typeof legacyStickyHeader === 'undefined' ) {
+			return;
+		}
+
+		// Handle legacy sticky header
+		if ( typeof legacyStickyHeader !== 'undefined' ) {
+			this.initLegacyStickyHeader( legacyStickyHeader, body );
+			return;
+		}
+
+		// Handle header builder sticky headers
+		this.handleStickyScroll();
+
+		window.addEventListener( 'scroll', function() {
+			this.handleStickyScroll();
+		}.bind( this ) );
+
+		// Handle viewport changes (desktop <-> mobile)
+		window.addEventListener( 'resize', function() {
+			this.handleStickyScroll();
+		}.bind( this ) );
+	},
+
+	/**
+	 * Initialize legacy sticky header (deprecated)
+	 */
+	initLegacyStickyHeader: function( sticky, body ) {
+		if ( sticky.classList.contains( 'sticky-scrolltop' ) ) {
+			var lastScrollTop = 0;
+			var elDist = sticky.offsetTop;
+			var adminBar = document.getElementsByClassName( 'admin-bar' )[0];
+	
+			if ( typeof( adminBar ) != 'undefined' && adminBar != null ) {		
+				elDist = elDist + 32;
+			}
+
+			window.addEventListener( 'scroll', function() {
+				var scroll = window.pageYOffset || document.documentElement.scrollTop;
+				if ( scroll < lastScrollTop ) {
+					sticky.classList.add( 'is-sticky' );
+					body.classList.add( 'sticky-active' );
+					body.classList.add( 'sticky-header-active' );
+				} else {
+					sticky.classList.remove( 'is-sticky' );
+					body.classList.remove( 'sticky-active' );
+					body.classList.remove( 'sticky-header-active' );
+				}
+				if ( lastScrollTop < elDist ) {
+					sticky.classList.remove( 'is-sticky' );
+				}				
+				lastScrollTop = scroll <= 0 ? 0 : scroll;
+
+				if ( scroll === 0 ) {
+					body.classList.remove( 'sydney-scrolling-up' );
+				}
+			}, false);
+		} else {
+			this.applySticky( sticky, body );
+
+			window.addEventListener( 'scroll', function() {
+				this.applySticky( sticky, body );
+			}.bind( this ) );
+		}
+	},
+
+	/**
+	 * Handle sticky scroll for header builder
+	 */
+	handleStickyScroll: function() {
+		let isMobile = window.matchMedia( '(max-width: 1024px)' ).matches;
+		let stickyHeaders = isMobile 
+			? document.querySelectorAll( '.shfb-mobile .shfb-sticky-header' )
+			: document.querySelectorAll( '.shfb-desktop .shfb-sticky-header' );
+
+		// Clean up sticky classes from the inactive viewport headers
+		let inactiveHeaders = isMobile
+			? document.querySelectorAll( '.shfb-desktop .shfb-sticky-header' )
+			: document.querySelectorAll( '.shfb-mobile .shfb-sticky-header' );
+		
+		inactiveHeaders.forEach( function( header ) {
+			header.classList.remove( 'sticky-active' );
+		} );
+
+		if ( stickyHeaders.length === 0 ) {
+			return;
+		}
+
+		let body = document.getElementsByTagName( 'body' )[0];
+
+		// Check if header has sticky-scrolltop class - if so, use scroll direction logic
+		let headerContainer = stickyHeaders[0].closest( '.shfb' );
+		if ( headerContainer && headerContainer.classList.contains( 'sticky-scrolltop' ) ) {
+			this.handleScrollToTopHeaders( stickyHeaders, body );
+		} else {
+			// Apply normal sticky to each header (usually just one)
+			stickyHeaders.forEach( function( sticky ) {
+				this.applySticky( sticky, body );
+			}.bind( this ) );
+		}
+	},
+
+	/**
+	 * Handle scroll-to-top headers (adapted from legacy implementation)
+	 */
+	handleScrollToTopHeaders: function( stickyHeaders, body ) {
+		// Initialize lastScrollTop if not exists
+		if ( typeof this.lastScrollTop === 'undefined' ) {
+			this.lastScrollTop = 0;
+		}
+
+		var scroll = window.pageYOffset || document.documentElement.scrollTop;
+		var elDist = 0;
+		
+		// Calculate element distance (use first header for reference)
+		if ( stickyHeaders.length > 0 ) {
+			let firstHeader = stickyHeaders[0];
+			if ( !firstHeader.classList.contains( 'header_layout_1' ) && !firstHeader.classList.contains( 'header_layout_2' ) ) {
+				elDist = firstHeader.offsetTop;
+			}
+		}
+		
+		var adminBar = document.getElementsByClassName( 'admin-bar' )[0];
+		if ( typeof( adminBar ) != 'undefined' && adminBar != null ) {
+			// Mobile admin bar is 46px, desktop is 32px
+			let isMobile = window.matchMedia( '(max-width: 1024px)' ).matches;
+			elDist = elDist + ( isMobile ? 46 : 32 );
+		}
+
+		// Scroll direction logic (adapted from legacy)
+		if ( scroll < this.lastScrollTop ) {
+			// Scrolling up - show header
+			stickyHeaders.forEach( function( sticky ) {
+				sticky.classList.add( 'sticky-active' );
+			} );
+			body.classList.add( 'sticky-active' );
+			body.classList.add( 'sticky-header-active' );
+			body.classList.remove( 'sydney-scrolling-down' );
+			
+			// Add body padding to prevent jump when header becomes visible
+			this.updateBodyPaddingForScrollTop( stickyHeaders );
+		} else {
+			// Scrolling down - hide header
+			stickyHeaders.forEach( function( sticky ) {
+				sticky.classList.remove( 'sticky-active' );
+			} );
+			body.classList.remove( 'sticky-active' );
+			body.classList.remove( 'sticky-header-active' );
+			body.classList.add( 'sydney-scrolling-down' );
+			
+			// Remove body padding when header is hidden (not covering content)
+			document.body.style.paddingTop = '0px';
+		}
+		
+		// Remove sticky when above header area (adapted from legacy)
+		if ( this.lastScrollTop < elDist ) {
+			stickyHeaders.forEach( function( sticky ) {
+				sticky.classList.remove( 'sticky-active' );
+			} );
+			body.classList.remove( 'sticky-active' );
+			body.classList.remove( 'sticky-header-active' );
+			body.classList.remove( 'sydney-scrolling-down' );
+			
+			// Remove body padding when not sticky
+			document.body.style.paddingTop = '0px';
+		}
+		
+		this.lastScrollTop = scroll <= 0 ? 0 : scroll;
+
+ 		// Failsafe: Force remove all sticky classes when at absolute top
+		// This handles edge cases in customizer preview with transparent headers
+		if ( scroll === 0 ) {
+			stickyHeaders.forEach( function( sticky ) {
+				sticky.classList.remove( 'sticky-active' );
+			} );
+			body.classList.remove( 'sticky-active' );
+			body.classList.remove( 'sticky-header-active' );
+			body.classList.remove( 'sydney-scrolling-down' );
+			body.classList.remove( 'sydney-scrolling-up' );
+			document.body.style.paddingTop = '0px';
+		}
+	},
+
+	/**
+	 * Update body padding for scroll-to-top headers to prevent jump
+	 */
+	updateBodyPaddingForScrollTop: function( stickyHeaders ) {
+		// Get all active sticky header elements (for the current viewport)
+		let isMobile = window.matchMedia( '(max-width: 1024px)' ).matches;
+		let activeStickySelector = isMobile 
+			? '.shfb-mobile .shfb-sticky-header.sticky-active'
+			: '.shfb-desktop .shfb-sticky-header.sticky-active';
+		const stickyElements = document.querySelectorAll( activeStickySelector );
+
+		// Calculate total height
+		let totalHeight = 0;
+		stickyElements.forEach( function( element ) {
+			totalHeight += element.offsetHeight;
+		} );
+
+		// Set body padding-top (same logic as applySticky method)
+		if ( totalHeight > 0 && !document.body.classList.contains( 'transparent-header' ) ) {
+			document.body.style.paddingTop = totalHeight + 'px';
+		}
+	},
+
+	/**
+	 * Apply sticky behavior to a header element
+	 */
+	applySticky: function( sticky, body ) {
+		if ( !sticky ) {
+			return;
+		}
+
+		var vertDist = window.pageYOffset;
+		var elDist = 0;
+
+		// Calculate element distance based on header type
+		if ( !sticky.classList.contains( 'header_layout_1' ) && !sticky.classList.contains( 'header_layout_2' ) ) {
+			elDist = sticky.offsetTop;
+		}
+		
+		var adminBar = document.getElementsByClassName( 'admin-bar' )[0];
+
+		if ( typeof( adminBar ) != 'undefined' && adminBar != null ) {		
+			elDist = elDist + 32;
+		}
+
+		if ( vertDist > elDist ) {
+			sticky.classList.add( 'sticky-active' );
+			body.classList.add( 'sticky-active' );
+			body.classList.add( 'sticky-header-active' );
+
+			// Get all active sticky header elements (for the current viewport)
+			let isMobile = window.matchMedia( '(max-width: 1024px)' ).matches;
+			let activeStickySelector = isMobile 
+				? '.shfb-mobile .shfb-sticky-header.sticky-active'
+				: '.shfb-desktop .shfb-sticky-header.sticky-active';
+			const stickyElements = document.querySelectorAll( activeStickySelector );
+
+			// Calculate total height
+			let totalHeight = 0;
+			stickyElements.forEach( function( element ) {
+				totalHeight += element.offsetHeight;
+			} );
+
+			// Set body padding-top
+			if ( totalHeight > 0 && !document.body.classList.contains( 'transparent-header' ) ) {
+				document.body.style.paddingTop = totalHeight + 'px';
+			}
+		} else {
+			sticky.classList.remove( 'sticky-active' );
+			body.classList.remove( 'sticky-active' );
+			body.classList.remove( 'sticky-header-active' );
+
+			// Remove body padding-top
+			document.body.style.paddingTop = '0px';
+		}
+	}
+};
+
+/**
+ * Header search
+ */
+sydney.headerSearch = {
+	init: function() {
+
+		var self            = this;
+		var button 		    = document.querySelectorAll( '.header-search' );
+		var form 			= window.matchMedia('(max-width: 1024px)').matches ? document.querySelector( '#masthead-mobile .header-search-form' ) : document.querySelector( '#masthead .header-search-form' );
+
+		if ( button.length === 0 ) {
+			return;
+		}
+
+		if (document.body.classList.contains('has-shfb-builder')) {
+			form = window.matchMedia('(max-width: 1024px)').matches ? document.querySelector('.shfb-mobile .header-search-form') : document.querySelector('.shfb-desktop .header-search-form');
+		}
+
+		// Initial positioning
+		this.updateSearchFormPosition(form);
+
+		// Update position on scroll for sticky headers
+		if (document.body.classList.contains('has-shfb-builder') && document.body.classList.contains('transparent-header')) {
+			window.addEventListener('scroll', () => {
+				this.updateSearchFormPosition(form);
+			});
+		}
+		
+		var searchInput 	= form.getElementsByClassName('search-field')[0];
+		var searchBtn 	    = form.getElementsByClassName('search-submit')[0];
+
+		for ( var buttonEl of button ) {
+			buttonEl.addEventListener( 'click', function(e){
+				e.preventDefault();
+
+				// Hide other search icons 
+				if( button.length > 1 ) {
+					for ( var btn of button ) {
+						btn.classList.toggle( 'hide' );
+					}
+				}
+
+				form.classList.toggle( 'active' );
+				e.target.closest( '.header-search' ).getElementsByClassName( 'icon-search' )[0].classList.toggle( 'active' );
+				e.target.closest( '.header-search' ).getElementsByClassName( 'icon-cancel' )[0].classList.toggle( 'active' );
+				e.target.closest( '.header-search' ).classList.add( 'active' );
+				e.target.closest( '.header-search' ).classList.remove( 'hide' );
+				
+				if( form.classList.contains( 'active' ) ) {
+					searchInput.focus();
+				}
+
+				if( e.target.closest( '.sydney-offcanvas-menu' ) !== null ) {
+					e.target.closest( '.sydney-offcanvas-menu' ).classList.remove( 'toggled' );
+				}
+			} );	
+		}	
+
+		searchBtn.addEventListener('keydown', function(e) {
+			var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
+
+			if (!isTabPressed) { 
+				return; 
+			}
+			form.classList.remove( 'active' );
+
+			// Back buttons to default state
+			self.backButtonsToDefaultState( button );
+			button.focus();
+		});
+
+		return this;
+	},
+
+	updateSearchFormPosition: function(form) {
+		if (document.body.classList.contains('has-shfb-builder') && document.body.classList.contains('transparent-header')) {
+			var shfbHeader = window.matchMedia('(max-width: 1024px)').matches ? document.querySelector('.shfb-mobile') : document.querySelector('.shfb-desktop');
+			
+			if (shfbHeader && form) {
+				const stickyActive = shfbHeader.querySelector('.sticky-active');
+				if (stickyActive) {
+					let stickyHeight = stickyActive.offsetHeight;
+					const stickyTop = parseInt(window.getComputedStyle(stickyActive).top) || 0;
+					
+					stickyHeight += stickyTop;
+					
+					form.style.top = stickyHeight + 'px';
+				}
+			}
+		}
+	},
+
+	backButtonsToDefaultState: function( button ) {
+		for ( var btn of button ) {
+			btn.classList.remove( 'hide' );
+			btn.querySelector( '.icon-cancel' ).classList.remove( 'active' );
+			btn.querySelector( '.icon-search' ).classList.add( 'active' );
+		}
+	}
+};
+
+/**
+ * Mobile menu
+ */
+sydney.mobileMenu = {
+	init: function() {
+        this.menu();
+        
+		window.addEventListener( 'resize', function() {
+			this.menu();
+        }.bind( this ) );
+	},
+
+	menu: function() {
+
+        if ( window.matchMedia( "(max-width: 1024px)" ).matches ) {
+            const mobileMenu = document.getElementsByClassName( 'mainnav' )[0];   
+			
+			if ( typeof( mobileMenu ) == 'undefined' || mobileMenu == null ) {
+				return;
+			}
+
+            const menuToggle = document.getElementsByClassName( 'btn-menu' )[0];
+
+            mobileMenu.setAttribute( 'id', 'mainnav-mobi' );
+
+            mobileMenu.classList.add( 'syd-hidden' );
+
+            var itemsWithChildren = mobileMenu.querySelectorAll( '.menu-item-has-children' );
+            const svgSubmenu = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"/></svg>';
+
+			itemsWithChildren.forEach(
+				function(currentValue, currentIndex, listObj) {
+					currentValue.getElementsByTagName( 'ul' )[0].style.display = 'none';
+					currentValue.getElementsByTagName( 'a' )[0].insertAdjacentHTML('beforeend', '<span class="btn-submenu">' + svgSubmenu + '</span>');
+				},
+				'myThisArg'
+			);
+
+
+            this.toggle( menuToggle, mobileMenu );
+
+            const submenuToggles 	= mobileMenu.querySelectorAll( '.btn-submenu' );
+
+			submenuToggles.forEach(
+				function(currentValue, currentIndex, listObj) {
+					currentValue.addEventListener( 'click', function(e) {
+						e.preventDefault();
+						var parent = currentValue.parentNode.parentNode;
+						parent.getElementsByClassName( 'sub-menu' )[0].classList.toggle( 'toggled' );
+					} );
+				},
+				'myThisArg'
+			  );
+
+
+        } else {
+            const mobile = document.getElementById( 'mainnav-mobi' );
+
+            if ( typeof( mobile ) != 'undefined' && mobile != null ) {
+                mobile.setAttribute( 'id', 'mainnav' );
+				mobile.classList.remove( 'toggled' );
+                const submenuToggles = mobile.querySelectorAll( '.btn-submenu' );
+
+				submenuToggles.forEach(
+					function(currentValue, currentIndex, listObj) {
+						currentValue.remove(); 
+					},
+					'myThisArg'
+				  );				
+
+            }
+        }
+    },
+    
+    toggle: function( menuToggle, mobileMenu ) {
+
+		if ( typeof( menuToggle ) == 'undefined' && menuToggle == null ) {
+			return;
+        }
+
+        menuToggle.addEventListener( 'click', function(e) {
+            e.preventDefault();
+            if ( mobileMenu.classList.contains( 'toggled' ) ) {
+                mobileMenu.classList.remove( 'toggled' );
+            } else {
+                mobileMenu.classList.add( 'toggled' ); 
+            }
+            e.stopImmediatePropagation()
+        } );
+    },
+
+    submenuToggle: function( submenuToggle ) {
+        submenuToggle.addEventListener( 'click', function(e) {
+            e.preventDefault();
+            var parent = submenuToggle.parentNode.parentNode;
+            parent.getElementsByClassName( 'sub-menu' )[0].classList.toggle( 'toggled' );
+        } );
+    },    
+};
+
+/**
+ * DOM ready
+ */
+function sydneyDomReady( fn ) {
+	if ( typeof fn !== 'function' ) {
+		return;
+	}
+
+	if ( document.readyState === 'interactive' || document.readyState === 'complete' ) {
+		return fn();
+	}
+
+	document.addEventListener( 'DOMContentLoaded', fn, false );
+}
+
+sydneyDomReady( function() {
+    sydney.backToTop.init();
+    sydney.removePreloader.init();
+    sydney.stickyMenu.init();
+	sydney.mobileMenu.init();
+	sydney.navigation.init();
+	sydney.stickyHeader.init();
+	sydney.headerSearch.init();	
+} );
+
+// Vanilla version of FitVids
+// Still licencened under WTFPL
+window.addEventListener("load", function() {
+(function(window, document, undefined) {
+	"use strict";
+	
+	// List of Video Vendors embeds you want to support
+	var players = ['iframe[src*="youtube.com"]', 'iframe[src*="vimeo.com"]'];
+	
+	// Select videos
+	var fitVids = document.querySelectorAll(players.join(","));
+	
+	// If there are videos on the page...
+	if (fitVids.length) {
+		// Loop through videos
+		for (var i = 0; i < fitVids.length; i++) {
+		// Get Video Information
+		var fitVid = fitVids[i];
+		var width = fitVid.getAttribute("width");
+		var height = fitVid.getAttribute("height");
+		var aspectRatio = height / width;
+		var parentDiv = fitVid.parentNode;
+	
+		// Wrap it in a DIV
+		var div = document.createElement("div");
+		div.className = "fitVids-wrapper";
+		div.style.paddingBottom = aspectRatio * 100 + "%";
+		parentDiv.insertBefore(div, fitVid);
+		fitVid.remove();
+		div.appendChild(fitVid);
+	
+		// Clear height/width from fitVid
+		fitVid.removeAttribute("height");
+		fitVid.removeAttribute("width");
+		}
+	}
+	})(window, document);
+});
+
+/**
+ * Support for isotope + lazyload from third party plugins
+ */
+ window.addEventListener("load", function() {
+	if( 
+		typeof Isotope !== 'undefined' && 
+		( 
+			typeof lazySizes !== 'undefined' || // Autoptimize and others
+			typeof lazyLoadOptions !== 'undefined' || // Lazy Load (by WP Rocket)
+			typeof a3_lazyload_extend_params !== 'undefined' // a3 Lazy Load
+		) 
+	) {
+		const isotopeContainer = document.querySelectorAll( '.isotope-container' );
+		if( isotopeContainer.length ) {
+			isotopeContainer.forEach(
+				function(container) {
+					
+					const images = container.querySelectorAll( '.isotope-item img[data-lazy-src], .isotope-item img[data-src]' );
+					if( images.length ) {
+						images.forEach(function(image){
+							if( image !== null ) {
+								image.addEventListener( 'load', function(){
+									// Currently the isotope container always is a jQuery object
+									jQuery( container ).isotope('layout');
+								} );
+							}
+						}, 'myThisArg');
+					}
+	
+				},
+				'myThisArg'
+			);
+		}
+	}
+});
