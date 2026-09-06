@@ -87,6 +87,7 @@ EMBED_LABEL = {
     "yt": "YouTube",
     "vimeo": "Vimeo",
     "drive": "Google Drive",
+    "spotify": "Spotify",
 }
 
 

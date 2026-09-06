@@ -191,13 +191,24 @@ description: Tien avonden, veertien thema's en een weekend weg. Zo ziet een avon
       <p class="muted">De liedjes van het Alphaweekend en de getuigenissen, gewoon om nog eens terug te luisteren.</p>
     </div>
     <div class="spotify-grid reveal">
-      <iframe src="https://open.spotify.com/embed/playlist/3z7Ql39vRbPy8jVWLlKtf3"
-              title="Spotify-playlist: Alphaweekend" loading="lazy"
-              allow="encrypted-media" allowtransparency="true"></iframe>
-      <iframe src="https://open.spotify.com/embed/playlist/2JBJ0JGSq3uHSMOAlbBpvE"
-              title="Spotify-playlist: getuigenissen" loading="lazy"
-              allow="encrypted-media" allowtransparency="true"></iframe>
+      <div>
+        <h3 class="episode__label">Alphaweekend</h3>
+        <div class="video video--player" data-video-kind="spotify"
+             data-video-id="3z7Ql39vRbPy8jVWLlKtf3" data-video-title="Spotify-playlist: Alphaweekend">
+          <button class="video__btn" type="button"><span>Spotify laden en spelen</span></button>
+        </div>
+      </div>
+      <div>
+        <h3 class="episode__label">Getuigenissen</h3>
+        <div class="video video--player" data-video-kind="spotify"
+             data-video-id="2JBJ0JGSq3uHSMOAlbBpvE" data-video-title="Spotify-playlist: getuigenissen">
+          <button class="video__btn" type="button"><span>Spotify laden en spelen</span></button>
+        </div>
+      </div>
     </div>
+    <p class="muted" style="font-size: var(--step--1);">
+      De speler wordt pas geladen als je erop klikt, zodat Spotify niet bij elk bezoek meekijkt.
+    </p>
   </div>
 </section>
 

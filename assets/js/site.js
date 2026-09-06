@@ -298,7 +298,8 @@
   var EMBED = {
     yt: function (id) { return 'https://www.youtube-nocookie.com/embed/' + id + '?rel=0&autoplay=1'; },
     vimeo: function (id) { return 'https://player.vimeo.com/video/' + id + '?autoplay=1'; },
-    drive: function (id) { return 'https://drive.google.com/file/d/' + id + '/preview'; }
+    drive: function (id) { return 'https://drive.google.com/file/d/' + id + '/preview'; },
+    spotify: function (id) { return 'https://open.spotify.com/embed/playlist/' + id; }
   };
 
   function initVideos() {
