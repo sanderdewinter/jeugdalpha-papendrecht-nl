@@ -144,6 +144,20 @@ a:hover { text-decoration-color: currentColor; }
 .band--red   { background: var(--clay-band); color: var(--white); }
 .band--tight { padding-block: clamp(2.25rem, 5vw, 3.5rem); }
 
+/* Photo band: set --band-photo on the section. */
+.band--photo { isolation: isolate; background: var(--deep); color: var(--white); }
+.band--photo::before {
+  content: ""; position: absolute; inset: 0; z-index: -2;
+  background-image: var(--band-photo);
+  background-size: cover; background-position: center;
+}
+.band--photo::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  /* 0.86 is the floor: against a hypothetical pure-white photo that still keeps
+     the muted secondary text at 4.9:1, so any background image is safe here. */
+  background: linear-gradient(180deg, rgb(13 30 43 / 0.92) 0%, rgb(13 30 43 / 0.86) 45%, rgb(13 30 43 / 0.94) 100%);
+}
+
 .band--deep .muted { color: var(--muted-dark); }
 /* --muted-dark is a cool blue-grey; on the warm rust band it reads dirty. */
 .band--red .muted { color: var(--muted-warm); }
@@ -321,11 +335,15 @@ body[data-nav-open="true"] { overflow: hidden; }
    Pillars / feature cards
    ========================================================================== */
 .pillar {
+  display: flex; flex-direction: column; overflow: hidden;
   background: var(--white); border: 1px solid var(--paper-200);
-  border-radius: var(--radius-lg); padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: var(--radius-lg);
   border-top: 5px solid var(--clay);
   transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }
+.pillar__media { aspect-ratio: 16 / 10; background: var(--paper-200); }
+.pillar__media img { width: 100%; height: 100%; object-fit: cover; }
+.pillar__body { padding: clamp(1.25rem, 3vw, 1.9rem); }
 .pillar:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 .pillar h3 { font-size: var(--step-2); margin-bottom: 0.5rem; }
 .pillar p { color: var(--muted); font-size: var(--step--1); line-height: 1.6; }
@@ -540,6 +558,9 @@ body[data-nav-open="true"] { overflow: hidden; }
 .spotify-grid { display: grid; gap: 1.5rem; }
 @media (min-width: 700px) { .spotify-grid { grid-template-columns: 1fr 1fr; } }
 .spotify-grid iframe { width: 100%; height: 380px; border: 0; border-radius: 12px; }
+.spotify-item { display: grid; gap: 0.9rem; justify-items: start; }
+/* The label art is black artwork on transparent — it only works on a light band. */
+.spotify-item img { max-width: 240px; height: auto; }
 
 /* ==========================================================================
    Footer
