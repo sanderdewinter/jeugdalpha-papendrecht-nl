@@ -1,0 +1,22 @@
+{
+  "name": "Jeugdalpha Papendrecht",
+  "email": "jeugdalphapapendrecht@hotmail.com",
+  "ageRange": "15 t/m ±25 jaar",
+  "venue": {
+    "name": "Elimkerk",
+    "street": "P.C. Hooftlaan 178",
+    "city": "Papendrecht",
+    "mapsUrl": "https://maps.google.com/?q=Elimkerk+P.C.+Hooftlaan+178+Papendrecht"
+  },
+  "youtube": "https://www.youtube.com/user/jeugdalpha/videos",
+  "spotify": {
+    "weekend": "3z7Ql39vRbPy8jVWLlKtf3",
+    "getuigenis": "2JBJ0JGSq3uHSMOAlbBpvE"
+  },
+  "_socials_note": "Vul hieronder de echte links in. Zolang een waarde null is, wordt het icoon niet weergegeven — er komt dus nooit een kapotte link op de site te staan. WhatsApp: gebruik het internationale nummer zonder + of 0, bijv. 31612345678.",
+  "socials": {
+    "instagram": null,
+    "facebook": null,
+    "whatsapp": null
+  }
+}

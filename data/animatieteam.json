@@ -1,0 +1,225 @@
+{
+  "intro": "Welkom op de pagina van het Animatieteam. Hier vind je alle bestaande filmpjes — series, docu's, good oldies en een hoop ongein.",
+  "channelUrl": "https://www.youtube.com/user/jeugdalpha/videos",
+  "sections": [
+    { "id": "series", "title": "Series", "slugs": ["la-banda", "expedititie-robinson", "golden-city", "golden-city2", "frederick-ḝn-de-tῗjdreїs", "animatieteam-victor1", "animatieteam-victor2", "carlos"] },
+    { "id": "docus", "title": "DOCU's", "slugs": ["docu-ka", "docu-dream-home-makeover"] },
+    { "id": "good-oldies", "title": "Good oldies", "slugs": ["dora", "chili-con-carnage", "s-a-i-t-a-t-t"] },
+    { "id": "andere-content", "title": "Andere content", "slugs": ["ongein-en-reclames"] }
+  ],
+  "series": {
+    "la-banda": {
+      "title": "La Banda",
+      "badge": "Nieuw",
+      "match": "100% match",
+      "era": "najaar 2022",
+      "meta": "4 afleveringen ~ HD ~ Bekroond “Beste Docu”",
+      "description": "Deze serie vertelt het waargebeurde en dramatische verhaal achter de Papendrechtse maffia, die in hun hoogtijdagen bij de grootste ter wereld hoorden. Een must-see, waar door het grote drama van ’21 dit net zo relevant blijkt als vroeger.",
+      "poster": "wp-content/uploads/2022/11/LaBandaThumb",
+      "posterWidths": [300, 480, 830],
+      "episodes": [
+        { "label": "S01E01", "kind": "yt", "id": "HowlXlmsZyI" },
+        { "label": "S01E02", "kind": "yt", "id": "CynyQY2l46w" },
+        { "label": "S01E03", "kind": "yt", "id": "sk0Of-KbhEo" },
+        { "label": "S01E04", "kind": "yt", "id": "1bFSqgHUNxk" }
+      ]
+    },
+    "expedititie-robinson": {
+      "title": "Expeditie Robinson",
+      "match": "98% match",
+      "era": "voorjaar 2022",
+      "meta": "1 seizoen ~ HD ~ “Het spannendste seizoen ooit!”",
+      "description": "In dit spannende spel worden deelnemers tot het uiterste gedreven om als laatste over te blijven in the middle of nowhere. Ja. Iedereen kent het wel, dus hoeven we hier niet super veel meer uit te gaan leggen.",
+      "poster": "wp-content/uploads/2022/10/RobinsonThumb",
+      "posterWidths": [300, 480, 830],
+      "episodes": [
+        { "label": "S01E01", "kind": "yt", "id": "E8zYCav4agE" },
+        { "label": "S01E02", "kind": "yt", "id": "QroOZiDpb2k" },
+        { "label": "S01E03", "kind": "drive", "id": "1fgkYcAbrFBEbcrbwS1ztu4xnEGW0ibCm" },
+        { "label": "S01E04", "kind": "drive", "id": "1qiiT646wkht0Z9vsck-02HRxKfV1df9N" }
+      ]
+    },
+    "golden-city": {
+      "title": "Golden City",
+      "match": "98% match",
+      "era": "najaar 2019",
+      "meta": "2 seizoenen ~ HD ~ Bekroond met ook heel veel Oscars",
+      "description": "In deze spannende serie wordt een zwerver meegenomen in een grootse organisatie. Samen met Mr. Orange voeren ze opdrachten uit voor Mr. Silver. Maar waarom? En wie is die Mr. Gold?",
+      "poster": "wp-content/uploads/2022/10/GoldenCity1Thumb",
+      "posterWidths": [300, 480, 830],
+      "nextSeason": { "slug": "golden-city2", "label": "Kijk hier seizoen 2!" },
+      "episodes": [
+        { "label": "S01E01", "kind": "yt", "id": "m58jOPSiO6Q" },
+        { "label": "S01E02", "kind": "yt", "id": "MQk8W3J4rb0" },
+        { "label": "S01E03", "kind": "yt", "id": "My0xRYpq3FE" },
+        { "label": "S01E04", "kind": "yt", "id": "cE7b40R7M_s" }
+      ]
+    },
+    "golden-city2": {
+      "title": "Golden City : Seizoen 2",
+      "match": "100% match",
+      "era": "najaar 2019",
+      "meta": "2 seizoenen ~ HD ~ Bekroond met ook heel veel Oscars",
+      "description": "In het tweede seizoen van “Golden City” wordt een creatieve draai gegeven aan het verhaal. Al zal de kijker zich constant afvragen hoe, het tweede seizoen zal in een briljante plottwist de kijker verrassen!",
+      "poster": "wp-content/uploads/2022/10/GoldenCity2Thumb",
+      "posterWidths": [300, 480, 830],
+      "prevSeason": { "slug": "golden-city", "label": "Begin bij seizoen 1" },
+      "episodes": [
+        { "label": "S02E01", "kind": "yt", "id": "K1gj78mb2Xs" },
+        { "label": "S02E02", "kind": "yt", "id": "Ozslz3DWeG4" }
+      ]
+    },
+    "frederick-ḝn-de-tῗjdreїs": {
+      "title": "Frederick ḝñ dẽ tῗjdrếїş",
+      "match": "99% match",
+      "era": "voorjaar 2019",
+      "meta": "1 seizoen ~ HD ~ Bekroond met veel Emmies",
+      "description": "Deze Zweedse serie zoekt de grenzen op van het doorbreken van de 3e muur en complexe materie als tijdreizen. Wanneer een genie een tijdmachine bouwt, nodigt hij de beste en belangrijkste mensen van de wereld uit. Maar dan wordt zijn kostbaarste bezit gestolen…",
+      "poster": "wp-content/uploads/2022/10/FrederickThumb",
+      "posterWidths": [300, 480, 830],
+      "episodes": [
+        { "label": "S01E01", "kind": "yt", "id": "hlG6tCrzqAk" },
+        { "label": "S01E02", "kind": "yt", "id": "5yDA8RPX6dk" },
+        { "label": "S01E03", "kind": "yt", "id": "uNWhaUzzXQk" },
+        { "label": "S01E04", "kind": "yt", "id": "X06cpebi7FY" },
+        { "label": "S01E05", "kind": "yt", "id": "FhhR6eKp33w" }
+      ]
+    },
+    "animatieteam-victor1": {
+      "title": "The Victor Story",
+      "match": "99% match",
+      "era": "voorjaar 2018",
+      "meta": "2 seizoenen ~ HD ~ Bekroond met echt heel veel Oscars",
+      "description": "In dit meeslepende drama gebeuren er rare dingen wanneer Victor in het animatieteam komt. Opdrachten van een mysterieuze ‘M’ leiden de zes leiders naar verschillende schrikbarende locaties. Wanneer stopt het? En vooral, waarom ligt Victor dood in de keuken van Minka?",
+      "poster": "wp-content/uploads/2022/10/TheVictorStoryThumb.psd",
+      "posterWidths": [300, 480, 830],
+      "nextSeason": { "slug": "animatieteam-victor2", "label": "Kijk hier seizoen 2!" },
+      "episodes": [
+        { "label": "S01E01", "kind": "yt", "id": "Een-6dXCbsk" },
+        { "label": "S01E02", "kind": "yt", "id": "q_i1Jr7rV7w" },
+        { "label": "S01E03", "kind": "yt", "id": "XrjSuBv0uCA" },
+        { "label": "S01E04", "kind": "yt", "id": "XrjSuBv0uCA" }
+      ]
+    },
+    "animatieteam-victor2": {
+      "title": "The Victor Story : Seizoen 2",
+      "match": "99% match",
+      "era": "voorjaar 2018",
+      "meta": "2 seizoenen ~ HD ~ Bekroond met echt heel veel Oscars",
+      "description": "Nadat het animatieteam veel opdrachten heeft opgevolgd van de mysterieuze ‘M’, gaan Lock Homeless en Esther op zoek naar de identiteit van die ‘M’. Hoe kan Victor hen hierin helpen?",
+      "poster": "wp-content/uploads/2022/10/TheVictorStoryThumb2.psd",
+      "posterWidths": [300, 480],
+      "prevSeason": { "slug": "animatieteam-victor1", "label": "Begin bij seizoen 1" },
+      "episodes": [
+        { "label": "S02E01", "kind": "yt", "id": "aZfv7JMUrLQ" },
+        { "label": "S02E02", "kind": "yt", "id": "-a-8n-wgzjc" },
+        { "label": "S02E03", "kind": "yt", "id": "b1GK4o9RILo" }
+      ]
+    },
+    "carlos": {
+      "title": "CARLOS.",
+      "match": "97% match",
+      "era": "voorjaar 2018",
+      "meta": "1 seizoen ~ HD ~ Bekroond met veel Mexicaanse Oscars",
+      "description": "De neef van de alom-bekende KoeleVlogBoy7 komt naar Nederland. KVB7 start hiervoor de zoektocht naar de allerbeste goocheltruc ooit. Totdat het misgaat en de gevolgen niet meer te overzien zijn.",
+      "poster": "wp-content/uploads/2022/10/CarlosThumb",
+      "posterWidths": [300, 480, 830],
+      "episodes": [
+        { "label": "S01E01", "kind": "drive", "id": "1wrMVjPJejyqqtAPghv_HHuCEjZ56JQTv" },
+        { "label": "S01E02", "kind": "drive", "id": "1fMqLxYiKcBp95qfsdWs1TDRtXte501o1" },
+        { "label": "S01E03", "kind": "drive", "id": "1BICrD-IQPS7_u93h9FAJItrIWXPCvGic" },
+        { "label": "S01E04", "kind": "drive", "id": "1k9Okxu-oK4JfPVc2Mlip0JfUuybI6jv3" },
+        { "label": "S01E05", "kind": "drive", "id": "12N8MRIUohSvXIoDloBrtHU-cRc2cG4rH" }
+      ]
+    },
+    "docu-ka": {
+      "title": "DOCU: KA.",
+      "match": "98% match",
+      "era": "voorjaar 2021",
+      "meta": "2 afleveringen ~ HD ~ Bekroond “Beste Docu”",
+      "description": "Deze DOCU is niet zomaar een docu. Dit gaat over een auto die de wereld kan redden. Wanneer de jongens van het animatieteam een docu maken over de KA., blijkt dat de wereld in hun handen ligt.",
+      "poster": "wp-content/uploads/2022/10/KaThumb",
+      "posterWidths": [300, 480, 830],
+      "episodes": [
+        { "label": "S01E01", "kind": "yt", "id": "ShZycpdsyuM" },
+        { "label": "S01E02", "kind": "yt", "id": "cCfZT_DWnc0" }
+      ]
+    },
+    "docu-dream-home-makeover": {
+      "title": "DOCU: Dream Home Makeover",
+      "match": "98% match",
+      "era": "voorjaar 2021",
+      "meta": "2 afleveringen ~ HD ~ Bekroond “Ook de beste Docu”",
+      "description": "In deze DOCU volgen we bekende klusser Victor Stegehuis, waarin hij laat zien waarmee hij bezig is in de makeover van zijn droomhuis. Met deze gezonde dosis humor zul je niet eens merken dat je er ook erg veel van leert.",
+      "poster": "wp-content/uploads/2022/10/DIYThumb",
+      "posterWidths": [300, 480, 830],
+      "episodes": [
+        { "label": "S01E01", "kind": "yt", "id": "R8oxOdgiPGI" },
+        { "label": "S01E02", "kind": "yt", "id": "fEcvQxp4TOc" }
+      ]
+    },
+    "dora": {
+      "title": "DORA",
+      "match": "98% match",
+      "era": "najaar 2017",
+      "meta": "1 seizoen ~ HD ~ Bekroond met 34 Oscars als “Beste Debut”",
+      "description": "Dora en Boots krijgen een opdracht van Kabouter Plop om de schat te zoeken in de Toren. Daarbij worden ze geholpen door Gargamel en K3. Kinderachtig? Nee. Grappig? Zeker. Briljant? Vraag dat maar aan de Oscars die ze kregen voor dit stuk.",
+      "poster": "wp-content/uploads/2022/10/DoraThumb",
+      "posterWidths": [300, 480, 830],
+      "episodes": [
+        { "label": "S01E01", "kind": "drive", "id": "0B3SRdxWHJvxFUGZJeVFLMkhBUnM" },
+        { "label": "S01E02", "kind": "drive", "id": "1g0Sy7shxqab2vPUu0Jr1_7j-mxkM_ot2" },
+        { "label": "S01E03", "kind": "drive", "id": "1fgkYcAbrFBEbcrbwS1ztu4xnEGW0ibCm" },
+        { "label": "S01E04", "kind": "drive", "id": "1qiiT646wkht0Z9vsck-02HRxKfV1df9N" }
+      ]
+    },
+    "chili-con-carnage": {
+      "title": "Chili Con Carnage",
+      "match": "98% match",
+      "era": "echt heel lang geleden",
+      "meta": "Film ~ HD ~ Basis voor de huidige filmwereld",
+      "description": "Zelden heeft een film een grotere impact gemaakt dan deze. De muziek, vette stunts en grote spanning zorgen voor een adembenemend tafereel, wat de basis heeft gezet voor de huidige animatie-team-wereld.",
+      "poster": "wp-content/uploads/2022/10/ChiliThumb",
+      "posterWidths": [300, 480, 830],
+      "episodes": [
+        { "label": "S01E01", "kind": "vimeo", "id": "62338802" },
+        { "label": "S01E02", "kind": "yt", "id": "murE0tzOjI4" },
+        { "label": "S01E03", "kind": "yt", "id": "wK9jIpSIRXg" }
+      ]
+    },
+    "s-a-i-t-a-t-t": {
+      "title": "S.A.I.T.A.T.T.",
+      "match": "97% match",
+      "era": "nog langer geleden",
+      "meta": "6 afleveringen ~ half-HD ~ Alpha-versie van de Godfather",
+      "description": "SAITATT. De geheime dienst van de Alpha. Kwade mensen dreigen met terroristische aanslagen, en de SAITATT is de enige die hen kan stoppen, ofzo.",
+      "poster": "wp-content/uploads/2022/10/SaitattThumb",
+      "posterWidths": [300, 480, 830],
+      "episodes": [
+        { "label": "S01E01", "kind": "yt", "id": "vqi0NCqbxZg" },
+        { "label": "S01E02", "kind": "yt", "id": "_zLUu-YQuUw" },
+        { "label": "S01E03", "kind": "yt", "id": "37hI8Bkb12k" },
+        { "label": "S01E04", "kind": "yt", "id": "XEtGiDxHrPc" },
+        { "label": "S01E05", "kind": "yt", "id": "uBVOixE2uus" },
+        { "label": "S01E06", "kind": "yt", "id": "p3CFAIlS9Dg" }
+      ]
+    },
+    "ongein-en-reclames": {
+      "title": "Ongein en reclames",
+      "match": "97% match",
+      "era": "altijd al",
+      "meta": "Heel veel meuk ~ HD ~ Bekroond met een oneindigheid aan prijzen",
+      "description": "Los van alle fenomenale films en series die het animatieteam produceert, maken ze ook geregeld klein werk, ongein en reclames. Die zijn samengevat op deze pagina.",
+      "poster": null,
+      "posterWidths": [],
+      "episodes": [
+        { "label": "Animatieteam op Kantoor", "kind": "yt", "id": "7j1AOhDviBo", "note": "Werken bij het animatieteam is natuurlijk niet alleen maar lachen en filmen. De jongens zijn ook veel op kantoor bezig en ook daar beleven zij avonturen." },
+        { "label": "Pingpong-drama van ’21", "kind": "yt", "id": "MNOfBLFjfrA", "note": "Veel mensen herinneren zich dit nog als de dag van gisteren. De heren hebben in een kleine documentaire de gebeurtenissen op een rij gezet en spreken met ooggetuigen." },
+        { "label": "Alpha Weekend Vlog", "kind": "yt", "id": "VPf9VQmV2qo", "note": "Wat krijg je als je een getalenteerde vlogger vraagt om op de zondag van het Alphaweekend een vlog te laten zien van het weekend zelf? Bijzonder leipe content, blijkt." },
+        { "label": "Reclame: Lekker Ganzen", "kind": "yt", "id": "mbd45qIQwiw", "note": "Het animatieteam is een booming business, waardoor vele bedrijven graag in sluikreclame willen investeren." },
+        { "label": "Reclame: Lekker Borden", "kind": "yt", "id": "hmyNTmpl5e4" },
+        { "label": "Nog meer ongein", "kind": "yt", "id": "B6hAttIQvos" }
+      ]
+    }
+  }
+}

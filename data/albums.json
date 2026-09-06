@@ -1,0 +1,420 @@
+{
+ "albums": [
+  {
+   "slug": "startbarbecue",
+   "title": "Startbarbecue",
+   "description": "De start-barbecue waarmee het seizoen begint: eten, elkaar leren kennen en meteen goede zin.",
+   "photos": [
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_01-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_01-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_02-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_02-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_03-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_03-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_04-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_04-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_05-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_05-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_06-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_06-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_07-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_07-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_08-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_08-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_09-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_09-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/cropped-bbq_09-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/cropped-bbq_09-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_10-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_10-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_11-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_11-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_12-480x853.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_12-830x1475.jpg",
+     "w": 830,
+     "h": 1475
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_13-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_13-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_14-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_14-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_15-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_15-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_16-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_16-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_17-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_17-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_18-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_18-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_19-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_19-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_20-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_20-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_22-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_22-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_23-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_23-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Startbarbecue/bbq_24-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Startbarbecue/bbq_24-1024x576.jpg",
+     "w": 1024,
+     "h": 576
+    }
+   ]
+  },
+  {
+   "slug": "alphaweekend-najaar-2019",
+   "title": "Alphaweekend najaar 2019",
+   "description": "Een heel weekend weg met de hele Alpha: bijeenkomsten, een bonte avond, goed eten en veel te weinig slaap.",
+   "photos": [
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-2-480x720.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-2-1366x2048.jpg",
+     "w": 1366,
+     "h": 2048
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-3-480x320.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-3-1536x1024.jpg",
+     "w": 1536,
+     "h": 1024
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-4-480x720.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-4-1366x2048.jpg",
+     "w": 1366,
+     "h": 2048
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-7-480x320.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-7-1536x1024.jpg",
+     "w": 1536,
+     "h": 1024
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-8-480x720.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-8-1366x2048.jpg",
+     "w": 1366,
+     "h": 2048
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-9-480x720.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-9-1366x2048.jpg",
+     "w": 1366,
+     "h": 2048
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-14-480x320.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-14-1536x1024.jpg",
+     "w": 1536,
+     "h": 1024
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-15-480x320.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-15-1536x1024.jpg",
+     "w": 1536,
+     "h": 1024
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-16-480x320.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-16-1536x1024.jpg",
+     "w": 1536,
+     "h": 1024
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-25-480x320.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-25-1536x1024.jpg",
+     "w": 1536,
+     "h": 1024
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-26-480x320.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-26-1536x1024.jpg",
+     "w": 1536,
+     "h": 1024
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-27-480x320.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/Alphaweekend-2019-27-1536x1024.jpg",
+     "w": 1536,
+     "h": 1024
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0326-min-480x320.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0326-min-1536x1024.jpg",
+     "w": 1536,
+     "h": 1024
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0326-min-scaled.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0326-min-scaled.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0358-min-480x320.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0358-min-1536x1024.jpg",
+     "w": 1536,
+     "h": 1024
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0358-min-scaled.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0358-min-scaled.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0362-min-480x720.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0362-min-1365x2048.jpg",
+     "w": 1365,
+     "h": 2048
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0362-min-scaled.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0362-min-scaled.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0373-min-480x320.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0373-min-1536x1024.jpg",
+     "w": 1536,
+     "h": 1024
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0373-min-scaled.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0373-min-scaled.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0384-min-480x720.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0384-min-1366x2048.jpg",
+     "w": 1366,
+     "h": 2048
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0384-min-scaled.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0384-min-scaled.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0389-min-480x720.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0389-min-1365x2048.jpg",
+     "w": 1365,
+     "h": 2048
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0389-min-scaled.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0389-min-scaled.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/cropped-DSC_0389-min-scaled-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/cropped-DSC_0389-min-scaled-1536x862.jpg",
+     "w": 1536,
+     "h": 862
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0396-min-480x320.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0396-min-1536x1024.jpg",
+     "w": 1536,
+     "h": 1024
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0396-min-scaled.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0396-min-scaled.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0402-min-480x320.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0402-min-1536x1024.jpg",
+     "w": 1536,
+     "h": 1024
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0402-min-scaled.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0402-min-scaled.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0415-min-480x320.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0415-min-1536x1024.jpg",
+     "w": 1536,
+     "h": 1024
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0415-min-scaled.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0415-min-scaled.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0419-min-480x320.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0419-min-1536x1024.jpg",
+     "w": 1536,
+     "h": 1024
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0419-min-scaled.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0419-min-scaled.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0506-min-480x320.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0506-min-1536x1024.jpg",
+     "w": 1536,
+     "h": 1024
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0506-min-scaled.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0506-min-scaled.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0511-min-480x320.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0511-min-1536x1024.jpg",
+     "w": 1536,
+     "h": 1024
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0511-min-scaled.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0511-min-scaled.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/cropped-DSC_0511-min-scaled-480x270.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/cropped-DSC_0511-min-scaled-1536x864.jpg",
+     "w": 1536,
+     "h": 864
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0524-min-480x320.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0524-min-1536x1024.jpg",
+     "w": 1536,
+     "h": 1024
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0524-min-scaled-480x320.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0524-min-scaled-1536x1024.jpg",
+     "w": 1536,
+     "h": 1024
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0529-edit-min-480x320.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0529-edit-min-1536x1024.jpg",
+     "w": 1536,
+     "h": 1024
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0529-edit-min-scaled.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0529-edit-min-scaled.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "thumb": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0529-edit-min-scaled-e1574282344640-480x282.jpg",
+     "full": "wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019/DSC_0529-edit-min-scaled-e1574282344640-1536x902.jpg",
+     "w": 1536,
+     "h": 902
+    }
+   ]
+  }
+ ]
+}
