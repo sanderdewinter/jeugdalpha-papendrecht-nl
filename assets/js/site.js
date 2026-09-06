@@ -79,16 +79,34 @@
   }
 
   /* --------------------------------------------------------------- events */
+  /* Inline icons: emoji render differently on every platform, and this UI
+     should look the same on a Windows laptop as on an iPhone. */
+  var ICON = {
+    clock: '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" ' +
+      'stroke="currentColor" stroke-width="2" stroke-linecap="round">' +
+      '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    pin: '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" ' +
+      'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+      '<path d="M12 21s7-5.3 7-11a7 7 0 1 0-14 0c0 5.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>',
+    calendar: '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" ' +
+      'stroke="currentColor" stroke-width="2" stroke-linecap="round">' +
+      '<rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>'
+  };
+
   function eventMarkup(ev) {
     var multi = ev.endDate && ev.endDate.getTime() !== ev.date.getTime();
     var facts = [];
-    if (ev.start && ev.end) facts.push('<span>🕖 ' + esc(ev.start) + '–' + esc(ev.end) + '</span>');
-    if (multi) facts.push('<span>📅 t/m ' + esc(longDate(ev.endDate)) + '</span>');
+    if (ev.start && ev.end) {
+      facts.push('<span>' + ICON.clock + esc(ev.start) + '\u2013' + esc(ev.end) + '</span>');
+    }
+    if (multi) {
+      facts.push('<span>' + ICON.calendar + 't/m ' + esc(longDate(ev.endDate)) + '</span>');
+    }
     if (ev.location) {
-      facts.push('<span>📍 ' + esc(ev.location.name) +
+      facts.push('<span>' + ICON.pin + esc(ev.location.name) +
         (ev.location.address ? ', ' + esc(ev.location.address) : '') + '</span>');
     } else {
-      facts.push('<span>📍 Locatie volgt</span>');
+      facts.push('<span>' + ICON.pin + 'Locatie volgt</span>');
     }
 
     return '<article class="event' + (ev.highlight ? ' event--highlight' : '') + '">' +

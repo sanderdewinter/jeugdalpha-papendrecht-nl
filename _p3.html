@@ -1,0 +1,27 @@
+<body><pre id="out">running</pre><script>
+(async()=>{
+  const out=[];
+  for(const [w,page] of [[390,'/'],[390,'/wat-is-de-jeugdalpha/'],[320,'/'],[768,'/']]){
+    const f=document.createElement('iframe');
+    f.style.cssText='width:'+w+'px;height:900px;border:0;position:absolute;left:-9999px';
+    f.src='http://localhost:8765'+page;
+    document.body.appendChild(f);
+    await new Promise(r=>{f.onload=r; setTimeout(r,2500)});
+    const doc=f.contentDocument, de=doc.documentElement;
+    out.push('--- '+w+'px '+page+'  scrollW='+de.scrollWidth+' clientW='+de.clientWidth);
+    const seen=new Set();
+    doc.querySelectorAll('*').forEach(el=>{
+      const r=el.getBoundingClientRect();
+      if(r.right>de.clientWidth+0.5){
+        let path=[],n=el;
+        while(n&&n.tagName!=='HTML'){path.unshift(n.tagName.toLowerCase()+(n.className?'.'+String(n.className).trim().split(/\s+/)[0]:''));n=n.parentElement;}
+        const key=path.join('>');
+        if(seen.has(key))return; seen.add(key);
+        out.push('  r='+r.right.toFixed(0)+' w='+r.width.toFixed(0)+' '+key);
+      }
+    });
+    f.remove();
+  }
+  document.getElementById('out').textContent=out.slice(0,40).join('\n');
+})();
+</script></body>
