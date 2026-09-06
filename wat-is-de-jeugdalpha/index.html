@@ -247,24 +247,13 @@ setTimeout(function () {
       <p class="muted">De liedjes van het Alphaweekend en de getuigenissen, gewoon om nog eens terug te luisteren.</p>
     </div>
     <div class="spotify-grid reveal">
-      <div>
-        <h3 class="episode__label">Alphaweekend</h3>
-        <div class="video video--player" data-video-kind="spotify"
-             data-video-id="3z7Ql39vRbPy8jVWLlKtf3" data-video-title="Spotify-playlist: Alphaweekend">
-          <button class="video__btn" type="button"><span>Spotify laden en spelen</span></button>
-        </div>
-      </div>
-      <div>
-        <h3 class="episode__label">Getuigenissen</h3>
-        <div class="video video--player" data-video-kind="spotify"
-             data-video-id="2JBJ0JGSq3uHSMOAlbBpvE" data-video-title="Spotify-playlist: getuigenissen">
-          <button class="video__btn" type="button"><span>Spotify laden en spelen</span></button>
-        </div>
-      </div>
+      <iframe src="https://open.spotify.com/embed/playlist/3z7Ql39vRbPy8jVWLlKtf3"
+              title="Spotify-playlist: Alphaweekend" loading="lazy"
+              allow="encrypted-media" allowfullscreen></iframe>
+      <iframe src="https://open.spotify.com/embed/playlist/2JBJ0JGSq3uHSMOAlbBpvE"
+              title="Spotify-playlist: getuigenissen" loading="lazy"
+              allow="encrypted-media" allowfullscreen></iframe>
     </div>
-    <p class="muted" style="font-size: var(--step--1);">
-      De speler wordt pas geladen als je erop klikt, zodat Spotify niet bij elk bezoek meekijkt.
-    </p>
   </div>
 </section>
 
@@ -309,14 +298,17 @@ setTimeout(function () {
         <h2>Waar</h2>
         <ul>
           <li>Elimkerk<br>P.C. Hooftlaan 178<br>Papendrecht</li>
-          <li><a href="https://maps.google.com/?q=Elimkerk+P.C.+Hooftlaan+178+Papendrecht" rel="noopener">Bekijk op de kaart</a></li>
           <li>Zaterdagavond 19:00&ndash;21:30</li>
+          <li data-map>
+            <a class="footer-map" href="https://maps.google.com/?q=Elimkerk+P.C.+Hooftlaan+178+Papendrecht" rel="noopener">
+              <img src="/assets/img/map-elimkerk.jpg" width="520" height="390" loading="lazy" decoding="async"
+                   alt="Kaart van het centrum van Papendrecht met de Elimkerk aan de P.C. Hooftlaan gemarkeerd.">
+            </a>
+            <a href="https://maps.google.com/?q=Elimkerk+P.C.+Hooftlaan+178+Papendrecht" rel="noopener">Routebeschrijving</a>
+            <span class="footer-map__credit" data-map-credit>Kaart &copy; <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a></span>
+          </li>
         </ul>
       </div>
-    </div>
-    <div class="site-footer__bottom">
-      <span>&copy; 2026 Jeugdalpha Papendrecht</span>
-      <span>Gemaakt met veel te veel enthousiasme</span>
     </div>
   </div>
 </footer>

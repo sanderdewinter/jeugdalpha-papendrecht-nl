@@ -79,3 +79,27 @@ geserveerd. Bewust niet via `fonts.googleapis.com`: dat stuurt het IP-adres van
 elke bezoeker naar Google en dat is voor een Nederlandse site een AVG-probleem.
 Regenereren kan met de CSS van Google Fonts; `assets/css/fonts.css` bevat verder
 niets bijzonders.
+
+## De kaart in de footer
+
+Google laat zich niet meer zonder API-key in een iframe zetten — je krijgt dan
+alleen een klein "Maps"-knopje te zien in plaats van een kaart. Daarom staat er
+nu een stilstaand plaatje in de footer dat doorlinkt naar Google Maps voor een
+routebeschrijving. Dat plaatje werkt altijd, kost geen verzoek aan een derde
+partij en heeft geen WebGL nodig.
+
+Wil je wel een echte Google-kaart? Vraag een
+[Maps Embed API](https://developers.google.com/maps/documentation/embed/get-api-key)-key
+aan en zet die in `data/site.json`:
+
+```json
+"maps": { "query": "Elimkerk P.C. Hooftlaan 178 Papendrecht", "embedKey": "AIza…", "zoom": 16 }
+```
+
+Zodra `embedKey` gevuld is, vervangt de footer het plaatje automatisch door de
+Google-kaart. Er hoeft niets gebouwd te worden.
+
+Het huidige plaatje (`assets/img/map-elimkerk.jpg`) is gemaakt uit
+OpenStreetMap-tiles, gecentreerd op 51.8278124, 4.6818032. Vervang je het niet
+door een Google-kaart, laat dan de bronvermelding "Kaart © OpenStreetMap"
+staan — dat is een licentievoorwaarde.

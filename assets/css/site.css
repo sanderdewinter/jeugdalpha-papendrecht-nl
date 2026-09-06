@@ -42,6 +42,7 @@
 
   /* Space & shape */
   --container: 1180px;
+  --header-h: 68px;
   --gutter: clamp(1.25rem, 4vw, 3rem);
   --band-y: clamp(3.5rem, 8vw, 7rem);
   --radius: 4px;
@@ -204,14 +205,20 @@ a:hover { text-decoration-color: currentColor; }
    ========================================================================== */
 .site-header {
   position: sticky; top: 0; z-index: 100;
-  background: color-mix(in srgb, var(--deep) 92%, transparent);
-  backdrop-filter: blur(10px);
   color: var(--white);
   border-bottom: 1px solid rgb(255 255 255 / 0.1);
 }
+/* The blur lives on a pseudo-element, not on .site-header itself. A
+   backdrop-filter makes its element the containing block for fixed-position
+   descendants, which collapsed the mobile nav panel to zero height. */
+.site-header::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: color-mix(in srgb, var(--deep) 92%, transparent);
+  backdrop-filter: blur(10px);
+}
 .site-header__inner {
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-  min-height: 68px;
+  min-height: var(--header-h);
 }
 .brand { display: inline-flex; align-items: center; gap: 0.7rem; text-decoration: none; }
 .brand img { width: 34px; height: auto; }
@@ -249,8 +256,9 @@ a:hover { text-decoration-color: currentColor; }
 
 @media (max-width: 899px) {
   .nav {
-    position: fixed; inset: 68px 0 0; background: var(--deep);
+    position: fixed; inset: var(--header-h) 0 0; background: var(--deep);
     padding: var(--gutter);
+    overscroll-behavior: contain;
     transform: translateY(-8px); opacity: 0; visibility: hidden;
     transition: opacity 0.22s var(--ease), transform 0.22s var(--ease), visibility 0.22s;
     overflow-y: auto;
@@ -492,7 +500,7 @@ body[data-nav-open="true"] { overflow: hidden; }
 .episode__note { font-size: var(--step--1); color: var(--muted); margin-bottom: 0.85rem; max-width: 65ch; }
 .band--deep .episode__note { color: var(--muted-dark); }
 
-/* Click-to-load video ----------------------------------------------------- */
+/* Embeds ------------------------------------------------------------------- */
 .video {
   position: relative; aspect-ratio: 16 / 9; width: 100%;
   background: var(--deep-700); border-radius: var(--radius-lg); overflow: hidden;
@@ -500,22 +508,6 @@ body[data-nav-open="true"] { overflow: hidden; }
 }
 .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .video--player { aspect-ratio: auto; height: 380px; }
-.video__btn {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  display: grid; place-items: center; gap: 0.75rem; align-content: center;
-  background: linear-gradient(135deg, var(--deep) 0%, var(--deep-500) 100%);
-  border: 0; color: var(--white); cursor: pointer; font: inherit; padding: 1rem;
-}
-.video__btn::before {
-  content: ""; width: 4.5rem; height: 4.5rem; border-radius: 999px;
-  background: var(--clay) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E") center / 45% no-repeat;
-  transition: transform 0.2s var(--ease), background-color 0.2s var(--ease);
-}
-.video__btn:hover::before { transform: scale(1.08); background-color: var(--clay-btn-hov); }
-.video__btn span {
-  font-size: var(--step--1); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--muted-dark);
-}
 .video__hint { margin-top: 0.6rem; font-size: 0.8rem; color: var(--muted); }
 .band--deep .video__hint { color: var(--muted-dark); }
 
@@ -559,11 +551,23 @@ body[data-nav-open="true"] { overflow: hidden; }
 @media (min-width: 760px) { .site-footer__grid { grid-template-columns: 1.4fr 1fr 1fr; } }
 .site-footer h2 { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sand); margin-bottom: 1rem; font-family: var(--font-text); }
 .site-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; font-size: var(--step--1); }
-.site-footer__bottom {
-  margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgb(255 255 255 / 0.12);
-  display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; justify-content: space-between;
-  font-size: 0.8rem;
+/* A self-hosted still, not a live map embed: it always renders, needs no
+   WebGL or script, and costs the visitor no third-party request. Dimmed so it
+   sits in the footer rather than shouting from it. */
+.footer-map {
+  display: block; max-width: 240px; margin: 0.4rem 0 0.7rem;
+  border-radius: var(--radius); overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  opacity: 0.62; filter: saturate(0.65);
+  transition: opacity 0.25s var(--ease), filter 0.25s var(--ease), transform 0.25s var(--ease);
 }
+.footer-map:hover, .footer-map:focus-visible { opacity: 1; filter: none; transform: translateY(-2px); }
+.footer-map img { width: 100%; height: auto; display: block; }
+/* Live Google embed, only used when data/site.json carries an API key. */
+.footer-map--live { aspect-ratio: 4 / 3; opacity: 0.85; filter: none; }
+.footer-map--live:hover { opacity: 1; transform: none; }
+.footer-map--live iframe { width: 100%; height: 100%; border: 0; display: block; }
+.footer-map__credit { display: block; margin-top: 0.4rem; font-size: 0.7rem; opacity: 0.75; }
 
 /* ==========================================================================
    Scroll reveal

@@ -76,10 +76,10 @@ setTimeout(function () {
 <section class="band band--deep">
   <div class="container">
     <div class="episodes">
-      <article class="episode"><h2 class="episode__label">S01E01</h2><div class="video" data-video-kind="drive" data-video-id="0B3SRdxWHJvxFUGZJeVFLMkhBUnM" data-video-title="DORA — S01E01"><button class="video__btn" type="button"><span>Google Drive laden en spelen</span></button></div><p class="video__hint">Het laden kan even duren.</p></article>
-<article class="episode"><h2 class="episode__label">S01E02</h2><div class="video" data-video-kind="drive" data-video-id="1g0Sy7shxqab2vPUu0Jr1_7j-mxkM_ot2" data-video-title="DORA — S01E02"><button class="video__btn" type="button"><span>Google Drive laden en spelen</span></button></div><p class="video__hint">Het laden kan even duren.</p></article>
-<article class="episode"><h2 class="episode__label">S01E03</h2><div class="video" data-video-kind="drive" data-video-id="1fgkYcAbrFBEbcrbwS1ztu4xnEGW0ibCm" data-video-title="DORA — S01E03"><button class="video__btn" type="button"><span>Google Drive laden en spelen</span></button></div><p class="video__hint">Het laden kan even duren.</p></article>
-<article class="episode"><h2 class="episode__label">S01E04</h2><div class="video" data-video-kind="drive" data-video-id="1qiiT646wkht0Z9vsck-02HRxKfV1df9N" data-video-title="DORA — S01E04"><button class="video__btn" type="button"><span>Google Drive laden en spelen</span></button></div><p class="video__hint">Het laden kan even duren.</p></article>
+      <article class="episode"><h2 class="episode__label">S01E01</h2><div class="video"><iframe src="https://drive.google.com/file/d/0B3SRdxWHJvxFUGZJeVFLMkhBUnM/preview" title="DORA — S01E01" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><p class="video__hint">Het laden kan even duren.</p></article>
+<article class="episode"><h2 class="episode__label">S01E02</h2><div class="video"><iframe src="https://drive.google.com/file/d/1g0Sy7shxqab2vPUu0Jr1_7j-mxkM_ot2/preview" title="DORA — S01E02" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><p class="video__hint">Het laden kan even duren.</p></article>
+<article class="episode"><h2 class="episode__label">S01E03</h2><div class="video"><iframe src="https://drive.google.com/file/d/1fgkYcAbrFBEbcrbwS1ztu4xnEGW0ibCm/preview" title="DORA — S01E03" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><p class="video__hint">Het laden kan even duren.</p></article>
+<article class="episode"><h2 class="episode__label">S01E04</h2><div class="video"><iframe src="https://drive.google.com/file/d/1qiiT646wkht0Z9vsck-02HRxKfV1df9N/preview" title="DORA — S01E04" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><p class="video__hint">Het laden kan even duren.</p></article>
     </div>
   </div>
 </section>
@@ -122,14 +122,17 @@ setTimeout(function () {
         <h2>Waar</h2>
         <ul>
           <li>Elimkerk<br>P.C. Hooftlaan 178<br>Papendrecht</li>
-          <li><a href="https://maps.google.com/?q=Elimkerk+P.C.+Hooftlaan+178+Papendrecht" rel="noopener">Bekijk op de kaart</a></li>
           <li>Zaterdagavond 19:00&ndash;21:30</li>
+          <li data-map>
+            <a class="footer-map" href="https://maps.google.com/?q=Elimkerk+P.C.+Hooftlaan+178+Papendrecht" rel="noopener">
+              <img src="/assets/img/map-elimkerk.jpg" width="520" height="390" loading="lazy" decoding="async"
+                   alt="Kaart van het centrum van Papendrecht met de Elimkerk aan de P.C. Hooftlaan gemarkeerd.">
+            </a>
+            <a href="https://maps.google.com/?q=Elimkerk+P.C.+Hooftlaan+178+Papendrecht" rel="noopener">Routebeschrijving</a>
+            <span class="footer-map__credit" data-map-credit>Kaart &copy; <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a></span>
+          </li>
         </ul>
       </div>
-    </div>
-    <div class="site-footer__bottom">
-      <span>&copy; 2026 Jeugdalpha Papendrecht</span>
-      <span>Gemaakt met veel te veel enthousiasme</span>
     </div>
   </div>
 </footer>

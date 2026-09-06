@@ -227,6 +227,8 @@
         if (n.tagName === 'A') n.setAttribute('href', 'mailto:' + site.email);
       });
 
+      renderMap(site);
+
       var s = site.socials || {};
       var links = [];
       if (s.instagram) links.push(['Instagram', s.instagram]);
@@ -242,6 +244,39 @@
         }).join('');
       });
     }).catch(function (err) { console.error('[jeugdalpha] socials', err); });
+  }
+
+  /* ------------------------------------------------------------------ map */
+  /* The footer ships a self-hosted still, so the map always renders. Google
+     refuses to be framed without an API key — it shows a bare "Maps" chip
+     instead — so the real Google embed only appears once a key is set in
+     data/site.json. */
+  function renderMap(site) {
+    var holder = $('[data-map]');
+    if (!holder) return;
+    var maps = site.maps || {};
+    if (!maps.embedKey || !maps.query) return;
+
+    var src = 'https://www.google.com/maps/embed/v1/place?key=' +
+      encodeURIComponent(maps.embedKey) +
+      '&q=' + encodeURIComponent(maps.query) +
+      '&zoom=' + encodeURIComponent(maps.zoom || 16);
+
+    var link = $('a.footer-map', holder);
+    if (link) {
+      var frame = document.createElement('iframe');
+      frame.src = src;
+      frame.title = 'Kaart met ' + maps.query;
+      frame.loading = 'lazy';
+      frame.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+      frame.allowFullscreen = true;
+      var box = document.createElement('div');
+      box.className = 'footer-map footer-map--live';
+      box.appendChild(frame);
+      link.replaceWith(box);
+    }
+    var credit = $('[data-map-credit]', holder);
+    if (credit) credit.remove();   /* Google tiles carry their own attribution */
   }
 
   /* -------------------------------------------------------------- gallery */
@@ -307,35 +342,6 @@
     });
     dlg.addEventListener('click', function (e) {
       if (e.target === dlg || e.target.classList.contains('lightbox__figure')) dlg.close();
-    });
-  }
-
-  /* --------------------------------------------------------------- videos */
-  /* Nothing is embedded until someone clicks: no YouTube/Vimeo/Drive request
-     on page load, and pages with 6 episodes stay light. */
-  var EMBED = {
-    yt: function (id) { return 'https://www.youtube-nocookie.com/embed/' + id + '?rel=0&autoplay=1'; },
-    vimeo: function (id) { return 'https://player.vimeo.com/video/' + id + '?autoplay=1'; },
-    drive: function (id) { return 'https://drive.google.com/file/d/' + id + '/preview'; },
-    spotify: function (id) { return 'https://open.spotify.com/embed/playlist/' + id; }
-  };
-
-  function initVideos() {
-    $$('[data-video-id]').forEach(function (holder) {
-      var btn = $('.video__btn', holder);
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var kind = holder.getAttribute('data-video-kind') || 'yt';
-        var src = (EMBED[kind] || EMBED.yt)(holder.getAttribute('data-video-id'));
-        var frame = document.createElement('iframe');
-        frame.src = src;
-        frame.title = holder.getAttribute('data-video-title') || 'Video';
-        frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-        frame.allowFullscreen = true;
-        frame.loading = 'lazy';
-        holder.innerHTML = '';
-        holder.appendChild(frame);
-      });
     });
   }
 
@@ -422,7 +428,6 @@
     initNav();
     markCurrent();
     initReveal();
-    initVideos();
     renderEvents();
     renderSeason();
     renderSocials();

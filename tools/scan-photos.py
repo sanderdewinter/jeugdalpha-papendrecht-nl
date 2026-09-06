@@ -20,13 +20,27 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "albums.json"
 
 # Folder → default title. Order here is the order on the page.
+#
+# 2020/01 is the full Alphaweekend shoot (126 frames). The two folders under
+# Fotos/Alphaweekend are curated subsets of the same weekend — every frame
+# number in them also appears in 2020/01 — so they are not listed separately.
 ALBUM_DIRS = [
+    ("wp-content/uploads/2020/01", "Alphaweekend najaar 2019"),
     ("wp-content/uploads/Fotos/Startbarbecue", "Startbarbecue"),
-    ("wp-content/uploads/Fotos/Alphaweekend/Alphaweekend-najaar-2019", "Alphaweekend najaar 2019"),
 ]
 
 THUMB_RANGE = (430, 560)   # WordPress derivative to use as grid thumbnail
 MAX_FULL_WIDTH = 1600      # never point the lightbox at a multi-MB original
+
+# Logos, editorial crops, and the Sydney theme's demo images (cta1.jpg,
+# welcome6.jpg, header10.jpg, head4.jpg, u2.jpg …) which sit in the same
+# upload folders but are not photos of anything.
+# Matched against the folded base name (no size suffix, no extension).
+SKIP = re.compile(
+    r"^cropped-|Thumb|random-infill|\.psd$|"
+    r"^(?:cta|head|header|welcome|slider|feature|service|team|testimonial|u)\d+$",
+    re.I,
+)
 
 
 def slugify(name):
@@ -44,15 +58,32 @@ def scan(rel_dir):
         if not m:
             continue
         base, w, h, _ = m.groups()
+        # WordPress keeps both "DSC_0034.jpg" and "DSC_0034-scaled.jpg" (and the
+        # hand-made "-min" exports). Same photo, so fold them onto one base or
+        # the album lists every frame two or three times.
+        base = re.sub(r"-(?:scaled|min)$", "", base, flags=re.I)
+        base = re.sub(r"-(?:scaled|min)$", "", base, flags=re.I)
+        # Skip on the folded base, not the raw filename: the derivative
+        # "cta1-480x200.jpg" has to be caught as well as "cta1.jpg".
+        if SKIP.search(base):
+            continue
         slot = bases.setdefault(base, {"original": None, "variants": []})
         if w is None:
             slot["original"] = entry
         else:
             slot["variants"].append((int(w), int(h), entry))
 
+    # "DSC_0396-1" is WordPress's collision suffix for a frame it already has.
+    for base in list(bases):
+        stem = re.sub(r"-\d+$", "", base)
+        if stem != base and stem in bases:
+            del bases[base]
+
     def sort_key(base):
+        # Sort on the frame number (the first run of digits), not the last, so
+        # "DSC_0396-1" does not land between "IMG_0001" and "IMG_0002".
         digits = re.findall(r"\d+", base)
-        return (int(digits[-1]) if digits else 0, base)
+        return (int(digits[0]) if digits else 0, base)
 
     photos = []
     for base in sorted(bases, key=sort_key):

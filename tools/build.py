@@ -10,7 +10,6 @@ data/animatieteam.json, then commit the regenerated HTML:
 Everything that changes per season (data/events.json) is read by the browser
 at runtime, so a new season needs no build at all.
 """
-import datetime
 import html
 import json
 import pathlib
@@ -19,7 +18,6 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
-YEAR = str(datetime.date.today().year)
 
 
 def read(p):
@@ -58,7 +56,7 @@ def write(rel_path, content):
 # --------------------------------------------------------------------------
 LAYOUT = read("layout.html")
 HEADER = read("partials/header.html")
-FOOTER = fill(read("partials/footer.html"), {"year": YEAR})
+FOOTER = read("partials/footer.html")
 
 
 def render_page(meta, body):
@@ -83,11 +81,13 @@ def render_page(meta, body):
 AT = json.loads((ROOT / "data" / "animatieteam.json").read_text(encoding="utf-8"))
 SERIES = AT["series"]
 
-EMBED_LABEL = {
-    "yt": "YouTube",
-    "vimeo": "Vimeo",
-    "drive": "Google Drive",
-    "spotify": "Spotify",
+# Embeds load with the page. They are lazy so a page with six of them does not
+# fetch all six up front, but nothing waits for a click.
+EMBED_SRC = {
+    "yt": "https://www.youtube-nocookie.com/embed/{id}?rel=0",
+    "vimeo": "https://player.vimeo.com/video/{id}",
+    "drive": "https://drive.google.com/file/d/{id}/preview",
+    "spotify": "https://open.spotify.com/embed/playlist/{id}",
 }
 
 
@@ -142,12 +142,12 @@ def card(slug):
 
 
 def video_block(ep, title):
-    label = EMBED_LABEL.get(ep["kind"], "video")
+    src = EMBED_SRC.get(ep["kind"], EMBED_SRC["yt"]).format(id=ep["id"])
     return (
-        f'<div class="video" data-video-kind="{e(ep["kind"])}" data-video-id="{e(ep["id"])}" '
-        f'data-video-title="{e(title)}">'
-        f'<button class="video__btn" type="button">'
-        f"<span>{e(label)} laden en spelen</span></button></div>"
+        f'<div class="video">'
+        f'<iframe src="{e(src)}" title="{e(title)}" loading="lazy" '
+        f'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" '
+        f"allowfullscreen></iframe></div>"
     )
 
 

@@ -18,5 +18,11 @@
     "instagram": null,
     "facebook": null,
     "whatsapp": null
+  },
+  "_maps_note": "Een echte Google Maps-embed kan alleen met een API-key: Google blokkeert het inbedden zonder key (je krijgt dan alleen een 'Maps'-knopje te zien). Zet hieronder een Maps Embed API-key en de footer laat automatisch de Google-kaart zien in plaats van het stilstaande plaatje.",
+  "maps": {
+    "query": "Elimkerk P.C. Hooftlaan 178 Papendrecht",
+    "embedKey": null,
+    "zoom": 16
   }
 }
