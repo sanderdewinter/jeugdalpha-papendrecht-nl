@@ -567,9 +567,12 @@ body[data-nav-open="true"] { overflow: hidden; }
 /* ==========================================================================
    Scroll reveal
    ========================================================================== */
+/* The hidden state is scoped to html.js, which an inline snippet in <head>
+   sets and a 3s watchdog removes if site.js never booted. Without that, a
+   failed script would leave whole pages at opacity 0. */
 @media (prefers-reduced-motion: no-preference) {
-  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.5s var(--ease), transform 0.5s var(--ease); }
-  .reveal.is-visible { opacity: 1; transform: none; }
+  html.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.5s var(--ease), transform 0.5s var(--ease); }
+  html.js .reveal.is-visible { opacity: 1; transform: none; }
 }
 
 [hidden] { display: none !important; }

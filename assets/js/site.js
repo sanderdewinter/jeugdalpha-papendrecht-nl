@@ -362,20 +362,48 @@
   }
 
   /* --------------------------------------------------------------- reveal */
+  /* Plain scroll-position check rather than IntersectionObserver: it behaves
+     identically for the reader, fires for content that is already in view on
+     load, and is testable without depending on how a browser computes
+     intersection with the top-level viewport. */
   function initReveal() {
     var nodes = $$('.reveal');
     if (!nodes.length) return;
-    if (!('IntersectionObserver' in window) ||
-        window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       nodes.forEach(function (n) { n.classList.add('is-visible'); });
       return;
     }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+
+    var pending = nodes.slice();
+    var queued = false;
+
+    function check() {
+      queued = false;
+      var limit = (window.innerHeight || 800) * 0.92;
+      pending = pending.filter(function (n) {
+        if (n.getBoundingClientRect().top < limit) {
+          n.classList.add('is-visible');
+          return false;
+        }
+        return true;
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
-    nodes.forEach(function (n) { io.observe(n); });
+      if (!pending.length) {
+        window.removeEventListener('scroll', schedule);
+        window.removeEventListener('resize', schedule);
+      }
+    }
+
+    /* Coalesce bursts of scroll events into one check per tick. */
+    function schedule() {
+      if (queued) return;
+      queued = true;
+      setTimeout(check, 0);
+    }
+
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    check();
   }
 
   /* Mark the current page in the nav without hardcoding it per page. */
@@ -390,6 +418,7 @@
   }
 
   function boot() {
+    document.documentElement.setAttribute('data-booted', '');
     initNav();
     markCurrent();
     initReveal();

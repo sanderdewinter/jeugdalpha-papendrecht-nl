@@ -22,6 +22,16 @@
 <link rel="preload" href="/assets/fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css">
+<script>
+/* Scroll-reveal opt-in. The watchdog makes sure a failed site.js can never
+   leave the page invisible. */
+document.documentElement.classList.add('js');
+setTimeout(function () {
+  if (!document.documentElement.hasAttribute('data-booted')) {
+    document.documentElement.classList.remove('js');
+  }
+}, 3000);
+</script>
 <script src="/assets/js/site.js" defer></script>
 </head>
 <body>
